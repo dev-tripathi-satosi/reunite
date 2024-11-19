@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reunite</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/scripts.js" defer></script>
+    <style>
+        /* New Container for Tiles with Gradient Glow Effect */
+        .container {
+            position: relative;
+            width: 70%; /* Set the width to 70% of the screen */
+            margin: 0 auto; /* Center the container */
+            padding: 20px;
+            background-color: #121212;
+            border-radius: 20px;  /* Rounded border for the container */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            margin-top: 20px;  /* Add some space above the new container */
+        }
+
+        .tile-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+        }
+
+        .tile2 {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.1); /* Light glassy background */
+            border-radius: 10px;
+            margin: 20px;
+            width: 250px;
+            height: 250px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, backdrop-filter 0.2s, box-shadow 0.2s;
+            flex-direction: column;
+            backdrop-filter: blur(10px); /* Glass effect */
+        }
+
+        /* Gradient and Glow Effect */
+        .tile2:hover {
+            backdrop-filter: blur(5px); /* Reduce blur on hover */
+            transform: rotateY(10deg) rotateX(10deg);
+            box-shadow: 0 0 25px 5px rgba(255, 0, 150, 0.5); /* Add colorful glow effect */
+        }
+
+        .tile2 .details {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .tile2 .details p {
+            color: #ffffff;
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+
+        /* Colorful Glow for Specific Details */
+        .tile2 .details .name {
+            text-shadow: 0 0 10px #0000ff; /* Blue glow for name */
+        }
+
+        .tile2 .details .nickname {
+            text-shadow: 0 0 10px #ffff00; /* Yellow glow for nickname */
+        }
+
+        .tile2 .details .relation {
+            text-shadow: 0 0 10px #ff00ff; /* Pink glow for relation */
+        }
+
+        .tile2 .details .clan {
+            text-shadow: 0 0 10px #ff0000; /* Red glow for clan */
+        }
+
+        /* Show details on hover */
+        .tile2:hover .details {
+            display: flex;
+        }
+
+        /* Form Button */
+        .form-button {
+            display: block;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .form-button:hover {
+            box-shadow: 0 0 25px #01e3f3;
+        }
+
+        /* Form Container */
+        .form-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(255, 0, 150, 0.5);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .form-container input, .form-container button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .form-container button {
+            background-color: #01e3f3;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header>
+        <img src="../assets/images/logo.png" alt="Logo" class="logo">
+        <h1>Reunite</h1>
+    </header>
+    <main>
+        <div class="album">
+            <!-- Example Tile -->
+            <div class="tile">
+                <img src="../assets/images/friends.jpg" alt="Friends Reunited : 1">
+                <p class="heading">Friends Reunited</p> 
+                <p class="number">0</p>
+            </div>
+            <div class="tile">
+                <img src="https://images.unsplash.com/photo-1511405889574-b01de1da5441?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Couples Reunited : 1">
+                <p class="heading">Couples Reunited</p> 
+                <p class="number">0</p>
+            </div>
+            <div class="tile">
+                <img src="../assets/images/family.jpg" alt="Families Reunited : 1">
+                <p class="heading">Families Reunited</p> 
+                <p class="number">0</p>
+            </div>
+            <div class="tile">
+                <img src="../assets/images/hope.jpg" alt="Hopeful People : 1">
+                <p class="heading">Hopeful People</p> 
+                <p class="number">0</p>
+            </div>
+        </div>
+        <div class="quote">
+            <p class="rotating-quote">Love has no <span id="changing-text">Boundaries</span></p>
+        </div>
+        <button class="form-button">Request Form</button>
+        
+        <!-- New Container Section -->
+        <div class="container">
+            <div class="tile-container">
+                <!-- Example Tile -->
+                <div class="tile2">
+                    <div class="details">
+                        <p class="name">Name: John Doe</p>
+                        <p class="nickname">Nicknames: Johnny</p>
+                        <p class="relation">Relation: Friend</p>
+                        <p class="memories">Memories: We used to play soccer together every weekend.</p>
+                        <p class="clan">Clan: Red Clan</p>
+                        <p>Additional Info 2: Works as a software developer</p>
+                    </div>
+                </div>
+                <!-- More tiles can be added similarly -->
+            </div>
+        </div>
+    </main>
+    <button id="music-control" class="music-button">♫</button> <!-- Background Music --> 
+    <audio id="background-music" loop> 
+        <source src="../assets/audio/bgm.mp3" type="audio/mpeg"> 
+        Your browser does not support the audio element. 
+    </audio>
+
+    <!-- Form Container -->
+    <div class="form-container" id="formContainer">
+        <button class="close-button" onclick="closeForm()">✖</button>
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Nicknames">
+        <input type="text" placeholder="Relation">
+        <input type="text" placeholder="Memories">
+        <input type="text" placeholder="Additional Info 1">
+        <input type="text" placeholder="Additional Info 2">
+        <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+
+
+    <div>
+    <footer>
+        <p>&copy; 2024 Reunite. All rights reserved.</p>
+    </footer>
+    </div>
+
+    <script>
+        // JavaScript for form button and form container
+        document.querySelector('.form-button').addEventListener('click', function() {
+            document.getElementById('formContainer').style.animation = 'showForm 0.5s ease-out forwards';
+            document.getElementById('formContainer').style.display = 'block';
+
+        });
+
+        function submitForm() {
+            // Form submission logic here
+            document.getElementById('formContainer').style.display = 'none';
+        }
+
+        function closeForm() {
+    const formContainer = document.getElementById('formContainer');
+    formContainer.style.animation = 'hideForm 0.5s ease-in forwards';
+    setTimeout(() => {
+        formContainer.style.display = 'none';
+    }, 500); // Matches the animation duration
+}
+
+
+// Form Submission 
+
+
+async function submitForm() {
+        // Gather form data
+        const formData = {
+            name: document.querySelector('input[placeholder="Name"]').value,
+            nicknames: document.querySelector('input[placeholder="Nicknames"]').value,
+            relation: document.querySelector('input[placeholder="Relation"]').value,
+            memories: document.querySelector('input[placeholder="Memories"]').value,
+            additionalInfo1: document.querySelector('input[placeholder="Additional Info 1"]').value,
+            additionalInfo2: document.querySelector('input[placeholder="Additional Info 2"]').value,
+        };
+
+        // Send form data to backend
+        try {
+            const response = await fetch("http://127.0.0.1:5000/submit-form", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert("Form submitted successfully!");
+                document.getElementById("formContainer").style.display = "none";
+            } else {
+                alert("Failed to submit form. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
+    }
+
+//  Loading Data 
+
+        // Fetch and populate tiles
+        async function loadTiles() {
+        try {
+            const response = await fetch("http://127.0.0.1:5000/get-data");
+            if (response.ok) {
+                const data = await response.json();
+                const container = document.querySelector('.tile-container');
+
+                // Clear existing tiles
+                container.innerHTML = '';
+
+                // Create tiles for each entry
+                data.forEach(entry => {
+                    const tile = document.createElement('div');
+                    tile.className = 'tile2';
+                    tile.innerHTML = `
+                        <div class="details">
+                            <p class="name">Name: ${entry.name}</p>
+                            <p class="nickname">Nicknames: ${entry.nicknames}</p>
+                            <p class="relation">Relation: ${entry.relation}</p>
+                            <p class="memories">Memories: ${entry.memories}</p>
+                            <p class="clan">Additional Info 1: ${entry.additionalInfo1 || 'N/A'}</p>
+                            <p>Additional Info 2: ${entry.additionalInfo2 || 'N/A'}</p>
+                        </div>
+                    `;
+                    container.appendChild(tile);
+                });
+            } else {
+                console.error("Failed to fetch data:", response.status);
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    // Load tiles on page load
+    document.addEventListener('DOMContentLoaded', loadTiles);
+    </script>
+</body>
+</html>

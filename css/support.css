@@ -1,0 +1,39 @@
+/* Form Close Button */
+.form-container .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.form-container .close-btn:hover {
+    transform: scale(1.2);
+    color: #ff0000;
+}
+
+/* Fixing Counter Tiles Alignment */
+.album {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center align tiles horizontally */
+    gap: 20px; /* Add spacing between tiles */
+    padding: 20px; /* Add padding for breathing space */
+}
+
+.tile {
+    flex: 0 1 calc(25% - 20px); /* Responsive width: 4 tiles per row */
+    box-sizing: border-box; /* Prevent overflow */
+    text-align: center;
+}
+
+.tile img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

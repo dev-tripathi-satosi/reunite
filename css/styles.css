@@ -1,0 +1,425 @@
+body {
+    background-color: #1e1e2f;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main */
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #1b2d4d;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.album {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tile {
+    position: relative;
+    background-color: #144261;
+    border-radius: 10px;
+    margin: 20px; /* Increased margin */
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgb(7, 41, 34);
+    transform-style: preserve-3d;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.bloom {
+    position: absolute;
+    width: 50px;  /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust color and opacity */
+    pointer-events: none; /* Prevent the bloom from capturing mouse events */
+    transform: translate(-50%, -50%); /* Center the bloom on the cursor */
+    box-shadow: 0 0 10px 20px rgba(224, 70, 173, 0.7), 0 0 20px 30px rgba(22, 236, 50, 0.7); /* Bloom effect */
+}
+
+
+.tile:hover {
+    box-shadow: 0 0 25px #01e3f3;
+}
+
+.tile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tile .heading {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.tile .number {
+    font-size: 24px;
+    color: white;
+    text-shadow: 0 0 10px rgba(224, 70, 173, 0.7), 0 0 20px rgba(22, 236, 50, 0.7);
+    z-index: 2;
+    opacity: 0.9;
+}
+
+.quote {
+    text-align: center;
+    margin: 20px;
+    font-size: 24px;
+    position: relative;
+    height: 30px; /* Adjust based on text size */
+}
+
+#changing-text {
+    position: relative;
+    text-align: center;
+    width: auto;
+    left: 0%;
+    transform: translateX(-50%);
+    /*animation: fadeOutIn 1.5s infinite;*/
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeOutIn {
+    0%, 20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    30%, 50% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    55%, 75% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    80%, 100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.request-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.request-button:hover {
+    background-color: #0056b3;
+}
+
+/*       
+        Container 
+*/
+/* New Container for Tiles with Gradient Glow Effect */
+.container {
+    position: relative;
+    width: 70%; /* Set the width to 70% of the screen */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;  /* Rounded border for the container */
+    box-shadow: 0 0 15px rgba(172, 99, 240, 0.7);
+    overflow: hidden;
+    margin-top: 20px;  /* Add some space above the new container */
+}
+
+.tile-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.tile2 {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1); /* Light glassy background */
+    border-radius: 10px;
+    margin: 20px;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, backdrop-filter 0.2s, box-shadow 0.2s;
+    flex-direction: column;
+    backdrop-filter: blur(10px); /* Glass effect */
+}
+
+/* Gradient and Glow Effect */
+.tile2:hover {
+    backdrop-filter: blur(5px); /* Reduce blur on hover */
+    transform: rotateY(10deg) rotateX(10deg);
+    box-shadow: 0 0 25px 5px rgba(255, 0, 150, 0.5); /* Add colorful glow effect */
+}
+
+.tile2 .details {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.tile2 .details p {
+    color: #ffffff;
+    margin: 5px 0;
+    opacity: 0.9;
+}
+
+/* Colorful Glow for Specific Details */
+.tile2 .details .name {
+    text-shadow: 0 0 10px #0000ff; /* Blue glow for name */
+}
+
+.tile2 .details .nickname {
+    text-shadow: 0 0 10px #ffff00; /* Yellow glow for nickname */
+}
+
+.tile2 .details .relation {
+    text-shadow: 0 0 10px #ff00ff; /* Pink glow for relation */
+}
+
+.tile2 .details .clan {
+    text-shadow: 0 0 10px #ff0000; /* Red glow for clan */
+}
+
+/* Show details on hover */
+.tile2:hover .details {
+    display: flex;
+}
+
+
+/*  
+    Details Container End
+*/
+
+.music-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #3d3d5c;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgb(7, 119, 95);
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.music-button:hover {
+    background-color: #01e3f3;
+    box-shadow: 0 0 25px #01e3f3;
+}
+
+
+
+/* Ending & Forms */
+
+/* Ending Section */
+.ending {
+    background-color: #1e1e2f;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #3d3d5c;
+}
+
+.ending p {
+    margin: 10px 0;
+}
+
+/* Form Button as Transparent Tile */
+.form-button {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent glass effect */
+    border: 2px solid #3d3d5c;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.form-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Form Container */
+.form-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    animation: showForm 0.5s ease-out forwards;
+}
+
+@keyframes showForm {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Form Fields */
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #3d3d5c;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.form-container input[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+/* Close Animation */
+@keyframes hideForm {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Close Button for Form */
+.form-container .close-button {
+    position : relative;
+    top: 10px;
+    background-color: rgba(255, 255, 255, 0.2); /* Fixed elliptical issue */
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 15px; /* Ensure proper alignment */
+    font-size: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.7);
+
+    bottom: 30px;
+    right: -250px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+ 
+}
+
+.form-container .close-button:hover {
+    transform: scale(1);
+    box-shadow: 0 0 25px #01e3f3;
+}
+
+
+
+/* Footer Styles */
+footer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #1b2d4d;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+
+/*
+
+    Form Ending 
+
+*/
