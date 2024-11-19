@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reunite</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/scripts.js" defer></script>
+</head>
+<body class="dark-mode">
+    <header>
+        <img src="../assets/images/logo.png" alt="Logo" class="logo">
+        <h1>Reunite</h1>
+    </header>
+    <main>
+        <div class="album">
+            <!-- Example Tile -->
+            <div class="tile">
+                <img src="../assets/images/friends.jpg" alt="Friends Reunited : 1">
+                <p class="heading">Friends Reunited</p> 
+                <p class="number">0</p>
+            </div>
+            <div class="tile">
+                <img src="https://images.unsplash.com/photo-1511405889574-b01de1da5441?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Couples Reunited : 1">
+                <p class="heading">Couples Reunited</p> 
+                <p class="number">0</p>
+            </div>
+            <div class="tile">
+                <img src="../assets/images/family.jpg" alt="Families Reunited : 1">
+                <p class="heading">Families Reunited</p> 
+                <p class="number">0</p>
+            </div>
+            <div class="tile">
+                <img src="../assets/images/hope.jpg" alt="Hopeful People : 1">
+                <p class="heading">Hopeful People</p> 
+                <p class="number">0</p>
+            </div>
+        </div>
+        <div class="quote">
+            <p class="rotating-quote">Love has no <span id="changing-text">Boundaries</span></p>
+        </div>
+        <button class="request-button">Request Form</button>
+        
+        <!-- New Container Section -->
+        <div class="container">
+            <div class="tile-container">
+                <!-- Example Tile -->
+                <div class="tile2">
+                    <div class="details">
+                        <p class="name">Name: John Doe</p>
+                        <p class="nickname">Nicknames: Johnny</p>
+                        <p class="relation">Relation: Friend</p>
+                        <p class="memories">Memories: We used to play soccer together every weekend.</p>
+                        <p class="clan">Clan: Red Clan</p>
+                        <p>Additional Info 2: Works as a software developer</p>
+                    </div>
+                </div>
+                <!-- More tiles can be added similarly -->
+            </div>
+        </div>
+    </main>
+    <button id="music-control" class="music-button">♫</button> <!-- Background Music --> 
+    <audio id="background-music" loop> 
+        <source src="../assets/audio/bgm.mp3" type="audio/mpeg"> 
+        Your browser does not support the audio element. 
+    </audio>
+</body>
+</html>
